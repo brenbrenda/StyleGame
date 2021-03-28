@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var finalhead: UIImageView!
     @IBOutlet weak var finalemoji: UIImageView!
     @IBOutlet weak var finalpose: UIImageView!
+    @IBOutlet weak var ChooseWinSegmentedControl: UISegmentedControl!
+    var chosenViewSegmented: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +42,18 @@ class ViewController: UIViewController {
         Pose.image = sender.currentImage
         finalpose.image = sender.currentImage
     }
+    
+    @IBAction func chosenWiner(_ sender: UISegmentedControl) {
+        chosenViewSegmented = sender.selectedSegmentIndex
+        print(chosenViewSegmented)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let GameVC = segue.destination as? GameViewController {
             GameVC.image1 = facehead.image
             GameVC.image2 = faceemoji.image
             GameVC.image3 = Pose.image
+            GameVC.chosenSegmented = chosenViewSegmented
         }
     }
     @IBAction func backtoMainSegue(_ sender : UIStoryboardSegue) {

@@ -15,9 +15,10 @@ class GameViewController: UIViewController {
     var timer = Timer()
     var timeRemain = 0.0
     var myscore = 0, computerscore = 0
-    var image1: UIImage?
-    var image2: UIImage?
-    var image3: UIImage?
+    var chosenSegmented: Int!
+    var image1: UIImage!
+    var image2: UIImage!
+    var image3: UIImage!
 
     @IBOutlet weak var headImage: UIImageView?
     @IBOutlet weak var faceImage: UIImageView?
@@ -29,6 +30,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var ComputerScore: UILabel!
     @IBOutlet weak var StoneButton: UIButton!
     @IBOutlet weak var WinLoseLabel: UILabel!
+    @IBOutlet weak var ChosenLoserLabel: UILabel!
     @IBOutlet weak var PaperButton: UIButton!
     @IBOutlet weak var TimerLeft: UILabel!
     @IBOutlet weak var Replay: UIButton!
@@ -85,10 +87,13 @@ class GameViewController: UIViewController {
         case PaperButton:
             if imageView.image == UIImage(named: EnemyHandImage[0]) {
                 WinLoseLabel.text = "draw"
+                ChosenLoserLabel.text = "draw"
             } else if imageView.image == UIImage(named: EnemyHandImage[1]) {
                 WinLoseLabel.text = "lose"
+                ChosenLoserLabel.text = "win"
             } else if imageView.image == UIImage(named: EnemyHandImage[2]) {
                 WinLoseLabel.text = "win"
+                ChosenLoserLabel.text = "lose"
             }
             score()
             ScissorsButton.isHidden = true
@@ -97,10 +102,13 @@ class GameViewController: UIViewController {
         case ScissorsButton:
             if imageView.image == UIImage(named: EnemyHandImage[0]) {
                 WinLoseLabel.text = "win"
+                ChosenLoserLabel.text = "lose"
             } else if imageView.image == UIImage(named: EnemyHandImage[1]) {
                 WinLoseLabel.text = "draw"
+                ChosenLoserLabel.text = "draw"
             } else if imageView.image == UIImage(named: EnemyHandImage[2]) {
                 WinLoseLabel.text = "lose"
+                ChosenLoserLabel.text = "win"
             }
             score()
             PaperButton.isHidden = true
@@ -109,10 +117,13 @@ class GameViewController: UIViewController {
         case StoneButton:
             if imageView.image == UIImage(named: EnemyHandImage[0]) {
                 WinLoseLabel.text = "lose"
+                ChosenLoserLabel.text = "win"
             } else if imageView.image == UIImage(named: EnemyHandImage[1]) {
                 WinLoseLabel.text = "win"
+                ChosenLoserLabel.text = "lose"
             } else if imageView.image == UIImage(named: EnemyHandImage[2]) {
                 WinLoseLabel.text = "draw"
+                ChosenLoserLabel.text = "draw"
             }
             score()
             PaperButton.isHidden = true
@@ -121,18 +132,32 @@ class GameViewController: UIViewController {
         default:
             break
         }
-        let alertController = UIAlertController(
-            title: WinLoseLabel.text,
-            message: ":)",
-            preferredStyle: .alert)
-        
-        let okButton = UIAlertAction(
-            title: "ok",
-            style: .default,
-            handler: {(action: UIAlertAction!) -> Void in})
-        
-        alertController.addAction(okButton)
-        self.present(alertController, animated: true, completion: nil)
+        switch chosenSegmented {
+        case 0:
+            let alertController = UIAlertController(
+                title: WinLoseLabel.text,
+                message: ":)",
+                preferredStyle: .alert)
+            let okButton = UIAlertAction(
+                title: "ok",
+                style: .default,
+                handler: {(action: UIAlertAction!) -> Void in})
+            alertController.addAction(okButton)
+            self.present(alertController, animated: true, completion: nil)
+        case 1:
+            let alertController = UIAlertController(
+                title: ChosenLoserLabel.text,
+                message: ":)",
+                preferredStyle: .alert)
+            let okButton = UIAlertAction(
+                title: "ok",
+                style: .default,
+                handler: {(action: UIAlertAction!) -> Void in})
+            alertController.addAction(okButton)
+            self.present(alertController, animated: true, completion: nil)
+        default:
+            break
+        }
         imageView.alpha = 0.6
         isHiddenfalse()
     }
@@ -165,20 +190,32 @@ class GameViewController: UIViewController {
     }
     
     func score(){
-        if WinLoseLabel.text == "win" {
-            myscore += 1
-            MyScore.text = "Your score is: \(myscore)"
-        } else if WinLoseLabel.text == "lose" {
-            computerscore += 1
-            ComputerScore.text = "Enemy Score is: \(computerscore)"
+        switch chosenSegmented {
+        case 0:
+            if WinLoseLabel.text == "win" {
+                myscore += 1
+                MyScore.text = "Your score is: \(myscore)"
+            } else if WinLoseLabel.text == "lose" {
+                computerscore += 1
+                ComputerScore.text = "Enemy Score is: \(computerscore)"
+            }
+        case 1:
+            if WinLoseLabel.text == "lose" {
+                myscore += 1
+                MyScore.text = "Your score is: \(myscore)"
+            } else if WinLoseLabel.text == "win" {
+                computerscore += 1
+                ComputerScore.text = "Enemy Score is: \(computerscore)"
+            }
+        default:
+            break
         }
+        
         if myscore >= 5 || computerscore >= 5 // time's up
        {
            //timer.invalidate()
             self.performSegue(withIdentifier: "ShowResult", sender: Any?.self)
-           
             ContinueButton.isHidden = true
-           
        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
