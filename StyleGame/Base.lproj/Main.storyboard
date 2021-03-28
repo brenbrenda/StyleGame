@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BLm-iB-B4Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="2484" height="896"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="2070" height="896"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RUh-e1-FFN">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -338,10 +339,22 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCC-f2-TCc">
-                                                        <rect key="frame" x="299" y="824" width="32" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="press here to START" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6j-RY-jiO">
+                                                        <rect key="frame" x="115" y="698" width="186" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" title="start"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCC-f2-TCc">
+                                                        <rect key="frame" x="180" y="723" width="56" height="87"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <imageReference key="image" image="play" catalog="system" symbolScale="large"/>
+                                                        </state>
                                                         <connections>
                                                             <segue destination="olu-CB-g9V" kind="presentation" identifier="Play" animates="NO" modalPresentationStyle="fullScreen" id="xzy-aB-hmW"/>
                                                         </connections>
@@ -350,9 +363,6 @@
                                                 <viewLayoutGuide key="safeArea" id="32H-cv-q2b"/>
                                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                                             </view>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head 20" translatesAutoresizingMaskIntoConstraints="NO" id="ssU-GW-vYp">
-                                                <rect key="frame" x="2070" y="0.0" width="414" height="896"/>
-                                            </imageView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -453,7 +463,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <visualEffectView opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gJS-jB-oer">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="-1" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AGc-TS-gBZ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -461,25 +471,25 @@
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcU-9E-c8k">
-                                <rect key="frame" x="93" y="723" width="162" height="46"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <state key="normal" title="Replay" image="repeat" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="large" weight="ultraLight"/>
-                                </state>
-                                <connections>
-                                    <action selector="ReplayButton:" destination="olu-CB-g9V" eventType="touchUpInside" id="mm6-C5-1vV"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3C-wD-SoM">
-                                <rect key="frame" x="83" y="417" width="248" height="61"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="51"/>
+                                <rect key="frame" x="57.5" y="392" width="273.5" height="86"/>
+                                <fontDescription key="fontDescription" name="ZenzeroGroteskSans-Round" family="Zenzero Grotesk Sans" pointSize="69"/>
                                 <state key="normal" title="Continue" image="arrowshape.zigzag.right" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="medium" weight="light"/>
                                 </state>
                                 <connections>
                                     <action selector="ContinuePlay:" destination="olu-CB-g9V" eventType="touchUpInside" id="4E2-Kw-YLO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcU-9E-c8k">
+                                <rect key="frame" x="60" y="697" width="195" height="72"/>
+                                <fontDescription key="fontDescription" name="ZenzeroGroteskSans-Round" family="Zenzero Grotesk Sans" pointSize="58"/>
+                                <state key="normal" title="Replay" image="repeat" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="large" weight="ultraLight"/>
+                                </state>
+                                <connections>
+                                    <action selector="ReplayButton:" destination="olu-CB-g9V" eventType="touchUpInside" id="mm6-C5-1vV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JV-Xx-NmO">
@@ -490,20 +500,20 @@
                                     <action selector="Game:" destination="olu-CB-g9V" eventType="touchUpInside" id="K90-eg-ypD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hX2-FG-qng">
-                                <rect key="frame" x="244" y="235" width="87" height="109"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="81"/>
-                                <state key="normal" title="👊🏻"/>
-                                <connections>
-                                    <action selector="Game:" destination="olu-CB-g9V" eventType="touchUpInside" id="aC5-wh-GCV"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGA-rq-gZi">
                                 <rect key="frame" x="305" y="100" width="87" height="109"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="81"/>
                                 <state key="normal" title="✌🏻"/>
                                 <connections>
                                     <action selector="Game:" destination="olu-CB-g9V" eventType="touchUpInside" id="0dT-t5-Tlx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hX2-FG-qng">
+                                <rect key="frame" x="244" y="235" width="87" height="109"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="81"/>
+                                <state key="normal" title="👊🏻"/>
+                                <connections>
+                                    <action selector="Game:" destination="olu-CB-g9V" eventType="touchUpInside" id="aC5-wh-GCV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -569,31 +579,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enemy  VS  You" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrI-FQ-S73">
-                                <rect key="frame" x="94" y="374" width="250" height="44"/>
+                                <rect key="frame" x="44" y="374" width="330" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <fontDescription key="fontDescription" name="ZenzeroGroteskSans-Round" family="Zenzero Grotesk Sans" pointSize="50"/>
                                 <color key="textColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKr-vo-zje">
-                                <rect key="frame" x="107" y="448" width="236" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
-                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4MN-OT-2Js">
                                 <rect key="frame" x="121" y="641" width="173" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <fontDescription key="fontDescription" name="ZenzeroGroteskSans-Round" family="Zenzero Grotesk Sans" pointSize="39"/>
                                 <state key="normal" title="Replay" image="repeat" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="large" weight="ultraLight"/>
                                 </state>
+                                <connections>
+                                    <segue destination="ESx-xf-lXg" kind="unwind" unwindAction="unwindSegue:" id="g67-qL-9Ci"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRY-xD-NAU">
-                                <rect key="frame" x="66" y="154" width="294" height="60"/>
+                                <rect key="frame" x="20" y="154" width="374" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <fontDescription key="fontDescription" name="ZenzeroGroteskSans-Round" family="Zenzero Grotesk Sans" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnt-nD-2L5">
+                                <rect key="frame" x="48" y="746" width="322" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ZenzeroGroteskSans-Round" family="Zenzero Grotesk Sans" pointSize="39"/>
+                                <state key="normal" title="ReSet Clothe">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="large" weight="ultraLight"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKr-vo-zje">
+                                <rect key="frame" x="73" y="445" width="236" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ZenzeroGroteskSans-Round" family="Zenzero Grotesk Sans" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -609,6 +630,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gmg-an-zZ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ESx-xf-lXg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1744.9275362318842" y="102.45535714285714"/>
         </scene>
@@ -638,7 +660,6 @@
         <image name="gray" width="566" height="1226"/>
         <image name="head 1" width="514" height="458"/>
         <image name="head 2" width="546" height="605"/>
-        <image name="head 20" width="456" height="540"/>
         <image name="head 24" width="379" height="458"/>
         <image name="head 25" width="449" height="450"/>
         <image name="head 26" width="400" height="518"/>
@@ -648,6 +669,7 @@
         <image name="head 5" width="457" height="578"/>
         <image name="head 6" width="459" height="508"/>
         <image name="head 7" width="452" height="459"/>
+        <image name="play" catalog="system" width="120" height="128"/>
         <image name="repeat" catalog="system" width="128" height="99"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

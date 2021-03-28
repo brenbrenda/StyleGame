@@ -9,9 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    
-    
-
     @IBOutlet weak var head: UIImageView!
     @IBOutlet weak var facehead: UIImageView!
     @IBOutlet weak var posehead: UIImageView!
@@ -49,7 +46,9 @@ class ViewController: UIViewController {
             GameVC.image2 = faceemoji.image
             GameVC.image3 = Pose.image
         }
-
+    }
+    @IBAction func backtoMainSegue(_ sender : UIStoryboardSegue) {
+        
     }
 
 }

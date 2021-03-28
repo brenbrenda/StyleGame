@@ -29,21 +29,19 @@ class GameViewController: UIViewController {
     @IBOutlet weak var ComputerScore: UILabel!
     @IBOutlet weak var StoneButton: UIButton!
     @IBOutlet weak var WinLoseLabel: UILabel!
-    @IBOutlet weak var SeeResultButton: UIButton!
     @IBOutlet weak var PaperButton: UIButton!
     @IBOutlet weak var TimerLeft: UILabel!
     @IBOutlet weak var Replay: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         view.addSubview(imageView)
         headImage?.image = image1
         faceImage?.image = image2
         clotheImage?.image = image3
+        ScoreReset()
         Reset()
     }
+    
     @objc func countdown()
     {
         timeRemain -= 0.01
@@ -54,7 +52,7 @@ class GameViewController: UIViewController {
             imageView.isHidden = true
             let alertController = UIAlertController(
                 title: "Time is up!",
-                message: ":)",
+                message: "Enemy win a point",
                 preferredStyle: .alert)
             
             let okButton = UIAlertAction(
@@ -64,12 +62,9 @@ class GameViewController: UIViewController {
             alertController.addAction(okButton)
             self.present(alertController, animated: true, completion: nil)
             computerscore += 1
-            PaperButton.isHidden = true
-            ScissorsButton.isHidden = true
-            StoneButton.isHidden = true
-            Replay.isHidden = false
-            Effect.isHidden = false
-            ContinueButton.isHidden = false
+            ComputerScore.text = "Enemy Score is: \(computerscore)"
+            imageView.alpha = 0.6
+            isHiddenfalse()
         }
     }
 
@@ -80,9 +75,8 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func ReplayButton(_ sender: Any) {
+        ScoreReset()
         Reset()
-        computerscore = 0
-        myscore = 0
     }
     
     @IBAction func Game(_ sender: UIButton) {
@@ -142,6 +136,7 @@ class GameViewController: UIViewController {
         imageView.alpha = 0.6
         isHiddenfalse()
     }
+    
     func Reset() {
         imageView.isHidden = false
         imageView.image = animatedImage
@@ -155,21 +150,20 @@ class GameViewController: UIViewController {
         StoneButton.isHidden = false
         
     }
-    func isHiddenfalse() {
+    func  isHiddenfalse() {
         timer.invalidate()
         Replay.isHidden = false
         Effect.isHidden = false
         ContinueButton.isHidden = false
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func ScoreReset() {
+        myscore = 0
+        computerscore = 0
+        MyScore.text = "Your score is: \(myscore)"
+        ComputerScore.text = "Enemy Score is: \(computerscore)"
     }
-    */
+    
     func score(){
         if WinLoseLabel.text == "win" {
             myscore += 1
@@ -194,4 +188,10 @@ class GameViewController: UIViewController {
         }
 
     }
+    @IBAction func unwindSegue(_ sender : UIStoryboardSegue) {
+        ScoreReset()
+        Reset()
+    }
+
+
 }
